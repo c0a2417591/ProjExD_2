@@ -36,8 +36,8 @@ def gameover(screen: pg.Surface) -> None:
     戻り値：なし
     こうかとんと爆弾がぶつかると表示
     """
-    go_img = pg.Surface((1100, 650))
-    pg.draw.rect(go_img, (0, 0, 0), (0,0,1100,650))
+    go_img = pg.Surface((WIDTH, HEIGHT))
+    pg.draw.rect(go_img, (0, 0, 0), (0,0,WIDTH,HEIGHT))
     go_img.set_alpha(255) #透明度の設定
 
     gof_img = pg.font.Font(None, 80)
