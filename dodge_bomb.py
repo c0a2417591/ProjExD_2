@@ -45,7 +45,6 @@ def gameover(screen: pg.Surface) -> None:
     go_img.blit(txt, [400, 300])
 
     kk_img2 = pg.image.load("fig/8.png")
-    kk_rct2 = kk_img2.get_rect()
     go_img.blit(kk_img2, [350, 290])
     go_img.blit(kk_img2, [710, 290])
     screen.blit(go_img, [0, 0])
@@ -121,6 +120,9 @@ def main():
         avx = vx*bb_accs[min(tmr//500, 9)]
         avy = vy*bb_accs[min(tmr//500, 9)]
         bb_img = bb_imgs[min(tmr//500, 9)]
+        bb_rct2 = bb_rct.center
+        bb_rct = bb_img.get_rect()
+        bb_rct.center = bb_rct2
         bb_rct.move_ip(avx, avy)
         yoko, tate = check_bound(bb_rct)
         if not yoko:
