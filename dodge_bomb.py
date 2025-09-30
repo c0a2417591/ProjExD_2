@@ -98,11 +98,13 @@ def main():
             if event.type == pg.QUIT: 
                 return
         screen.blit(bg_img, [0, 0]) 
+
         if kk_rct.colliderect(bb_rct): #こうかとんと爆弾の衝突判定
             gameover(screen) #ゲームオーバー
             return
         key_lst = pg.key.get_pressed()
         sum_mv = [0, 0]
+
         for key, mv in DELTA.items():
             if key_lst[key]:
                 sum_mv[0] += mv[0]
@@ -119,6 +121,7 @@ def main():
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
         screen.blit(kk_img, kk_rct)
+
         avx = vx*bb_accs[min(tmr//500, 9)]
         avy = vy*bb_accs[min(tmr//500, 9)]
         bb_img = bb_imgs[min(tmr//500, 9)]
@@ -127,12 +130,14 @@ def main():
         bb_rct.center = bb_rct2
         bb_rct.move_ip(avx, avy)
         yoko, tate = check_bound(bb_rct)
+
         if not yoko:
             avx *= -1
             vx *= -1
         if not tate:
             avy *= -1
             vy *= -1
+            
         screen.blit(bb_img, bb_rct)
         pg.display.update()
         tmr += 1
